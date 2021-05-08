@@ -4,6 +4,17 @@ const Movie=require("../modules/movies");
 router.get("/",(req,res)=>{
     res.render("home");
 })
+router.get("/remove",(req,res)=>{
+    res.render("remove.ejs");
+})
+router.post("/remove",async(req,res)=>{
+    const {movieId}=req.body;
+    await Movie.query("DELETE FROM MOVIE WHERE ID="+`${movieId}`,(err,result)=>{
+        if(err){console.log(err)}
+        console.log("Movie has been successfully deleted")
+    });
+    res.redirect("/");
+})
 router.post("/",async(req,res)=>{
     const {ID,movieName,date}=req.body;
     await Movie.query(`INSERT INTO MOVIE VALUES("${ID}","${movieName}","${date}")`,(err,res)=>{
