@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<body>
+    <h1>Enter the movie id that needs to be updated</h1>
+    <form action="/api/movies/update" method="POST">
+        <label for="movieId">Remove Movie by ID:</label>
+        <input type="text" name="movieId" placeholder="Enter the Movie ID"><br>
+        <label name="movieName">Enter the Movie Name</label>
+        <input type="text" name="movieName" placeholder="Movie Name (Ex:Thor,Spiderman)"><br>
+        <label for="releaseDate">Enter the Release Date</label>
+        <input type="text" name="releaseDate" placeholder="(MM/DD/YYYY)">
+        <br><button class="btn btn-success">Update</button>
+    </form>
+</body>
+</html>

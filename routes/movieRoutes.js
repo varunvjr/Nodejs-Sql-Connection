@@ -23,8 +23,20 @@ router.post("/",async(req,res)=>{
     });
     res.redirect("/api/movies");
 })
+router.get("/update",(req,res)=>{
+    res.render("update.ejs");
+})
+router.post("/update",async(req,res)=>{
+    console.log("Movie Details",req.body);
+    const {movieId,movieName,releaseDate}=req.body;
+    await Movie.query(`UPDATE MOVIE SET MOVIE_NAME="${movieName}",RELEASE_DATE="${releaseDate}" where ID="${movieId}"`,(err,result)=>{
+        if(err){
+            console.log("Error")
+        }
+        res.redirect("/api/movies/allMovies");
+    })
+})
 router.get("/allMovies",async(req,res)=>{
-    const movieName=req.params.name;
     await Movie.query(`SELECT * FROM MOVIE ORDER BY RELEASE_DATE DESC`,(err,result)=>{
         if(err){
             throw err;
